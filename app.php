@@ -1,9 +1,20 @@
 <?php
 require './getEgenskapstypenavn.php';
-$result = getEgenskapstyper(37);
+
+$vegobjekttyper_array = array();
+$vegobjekttyper = fopen("vegobjekttyper.txt", "r");
+while ($line = fgets($vegobjekttyper)) {
+    $line = preg_replace('~[\r\n]+~', '', $line);
+    $elements = explode(" ", $line);
+    $vegobjekttyper_array[$elements[0]] = $elements[1];
+};
+fclose($vegobjekttyper);
+
+$random_id = array_rand($vegobjekttyper_array, 1);
+$result = getEgenskapstyper($random_id);
 ?>
 <script>
-    console.log(<?= json_encode($result); ?>);
+    console.log(<?= json_encode($vegobjekttyper_array); ?>);
 </script>
 <!DOCTYPE html>
 <html lang = "en">
