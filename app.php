@@ -27,9 +27,18 @@ $result = getEgenskapstyper($random_id);
             <h3>Finn VT fra ET</h3>
         </header>
         <section>
-            Egenskapstyper her:
-            Her:
-            <p> <?php foreach($result as $key => $value) {echo $value . "<br>";} ?> </p>
+            <div>
+                Egenskapstyper her:
+                Her:
+                <p> <?php foreach($result as $key => $value) {echo $value . "<br>";} ?> </p>
+            </div>
+            <div>
+                <select name="vegobjekttype"><option selected value="">Velg vegobjekttype</option>
+                <?php
+                foreach ($vegobjekttyper_array as $key => $value) {echo '<option value="'.$key.'">'.$key." - ".$value.'</option>';}
+                ?>
+                </select>
+            </div>
         </section>
         <footer>
             Diverse
